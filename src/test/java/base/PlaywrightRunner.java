@@ -20,10 +20,9 @@ public class PlaywrightRunner {
 
     @BeforeEach
     void setup() {
-        // todo set headless to true by default
         browser = playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
-                        .setHeadless(false)
+                        .setHeadless(true)
                         .setSlowMo(100)
         );
         context = browser.newContext();
