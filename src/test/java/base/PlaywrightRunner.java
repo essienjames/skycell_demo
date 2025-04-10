@@ -6,7 +6,7 @@ import pages.LoginPage;
 
 import java.nio.file.Paths;
 
-public class PlaywrightSetup {
+public class PlaywrightRunner {
     protected static Playwright playwright;
     protected Browser browser;
     protected BrowserContext context;
@@ -21,7 +21,11 @@ public class PlaywrightSetup {
     @BeforeEach
     void setup() {
         // todo set headless to true by default
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        browser = playwright.chromium().launch(
+                new BrowserType.LaunchOptions()
+                        .setHeadless(false)
+                        .setSlowMo(100)
+        );
         context = browser.newContext();
 
         // Start tracing
